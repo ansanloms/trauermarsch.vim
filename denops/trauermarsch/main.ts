@@ -45,10 +45,11 @@ export async function main(denops: Denops) {
       const content = parse(body);
 
       assertProvider(content.meta.provider);
-      const provider = getProvider(content.meta.provider);
-      const blocks = await provider.chat(content);
 
       await helper.echo(denops, "loading...");
+
+      const provider = getProvider(content.meta.provider);
+      const blocks = await provider.chat(content);
 
       await denops.call("appendbufline", bufnr, "$", [
         ...provider.append(blocks),

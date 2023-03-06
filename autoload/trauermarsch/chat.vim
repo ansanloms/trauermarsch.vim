@@ -1,7 +1,7 @@
 function! trauermarsch#chat#template(provider) abort
-  call denops#request("trauermarsch", "template", [bufnr() + 0, a:provider])
+  call denops#notify("trauermarsch", "template", [bufnr() + 0, a:provider])
 endfunction
 
 function! trauermarsch#chat#chat() abort
-  call denops#request("trauermarsch", "chat", [bufnr() + 0])
+  call denops#notify("trauermarsch", "chat", [bufnr() + 0])
 endfunction
