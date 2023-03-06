@@ -16,7 +16,7 @@ export abstract class Provider {
   }
 
   protected format(block: ChatBlock): string[] {
-    return [`${block.role}`, "---", "", ...block.content.split("\n"), "", ""];
+    return [`${block.role}`, "---", "", ...block.content.split("\n"), ""];
   }
 
   /**

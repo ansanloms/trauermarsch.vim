@@ -46,9 +46,9 @@ export async function main(denops: Denops) {
 
       assertProvider(content.meta.provider);
       const provider = getProvider(content.meta.provider);
-      console.log(provider, content);
       const blocks = await provider.chat(content);
-      console.log(blocks);
+
+      await helper.echo(denops, "loading...");
 
       await denops.call("appendbufline", bufnr, "$", [
         ...provider.append(blocks),
@@ -56,6 +56,8 @@ export async function main(denops: Denops) {
 
       await denops.cmd("redraw");
       await denops.cmd("$");
+
+      await helper.echo(denops, "");
     },
   };
 }

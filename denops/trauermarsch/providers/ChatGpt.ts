@@ -77,7 +77,10 @@ export class ChatGpt extends Provider {
   }
 
   public append(blocks: ChatBlock[]) {
-    return blocks.map((block) => this.format(block))
-      .flat().concat(...this.format({ role: "user", content: "" }));
+    return [""].concat(
+      ...blocks.map((block) => this.format(block))
+        .flat(),
+      ...this.format({ role: "user", content: "" }),
+    );
   }
 }
